@@ -1,0 +1,28 @@
+Database for Members_Only
+
+Users
+id:integer [present, unique]
+name:string [present, unique, length [8-30 char]]
+password_digest: string [present, length [8-30 char]]
+member:boolean
+
+has_many: posts
+has_many: comments
+
+Posts
+id:integer [present, unique]
+user_id:integer [present]
+title:string [present, length [ 8-250 char]]
+body: string [present]
+
+belongs_to: user
+has_many: comments
+
+Comments
+id:integer [present, unique]
+user_id:integer [present]
+post_id:integer [present]
+body:string [present, length [1-5000 char]]
+
+belongs_to: user
+belongs_to: post
